@@ -4,8 +4,8 @@ import machine
 import utime
 
 
-led_external = machine.Pin(16, machine.Pin.OUT)
-button = machine.Pin(14, machine.Pin.IN, pull=Pin.NONE) 
+led_external = machine.Pin(14, machine.Pin.OUT)
+button = machine.Pin(16, machine.Pin.IN, pull=Pin.NONE) 
 
 while True:
 if button.value() == 1:
