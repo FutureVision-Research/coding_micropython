@@ -1,12 +1,14 @@
-#This script blinks the onboard LED (GPIO pin 25) on a Raspberry Pi Pico RP2040.
+#This script blinks an external LED (not built onto the board) connected to a Raspberry Pi Pico RP2040.
 
-import machine
-import utime
+import machine 
+import utime   
 
-led_onboard = machine.Pin(25, machine.Pin.OUT) 
+led_pin = 15  
 
-while True:  
-  led_onboard.value(1)  
-  utime.sleep(5)        
-  led_onboard.value(0)  
-  utime.sleep(5)
+led = machine.Pin(led_pin, machine.Pin.OUT) 
+
+while True:
+    led.on()          
+    utime.sleep(1)     
+    led.off()         
+    utime.sleep(1)    
