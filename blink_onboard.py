@@ -1,5 +1,4 @@
 #This script blinks the onboard LED (GPIO pin 25) on a Raspberry Pi Pico RP2040.
-#Be sure to place a 51Ω (or higher) resistor in series with the LED.
 
 import machine #Loads machine library, which allows us to control GPIO pins
 import utime   #Loads the microtime library, which allows us to keep track of time
