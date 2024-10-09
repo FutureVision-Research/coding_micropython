@@ -7,11 +7,11 @@ import utime   #Loads the microtime library, which allows us to keep track of ti
 # Define the GPIO pin number where the external LED is connected
 led_pin = 15  
 
-led = Pin(led_pin, Pin.OUT) #Sets GPIO pin 15 as an output and assigns it to an object called "led"
+led = machine.Pin(led_pin, machine.Pin.OUT) #Sets GPIO pin 15 as an output and assigns it to an object called "led"
 
 # Infinite loop to blink the LED
 while True:
     led.on()          # Turn the LED on
-    time.sleep(1)     # Wait for 1 second (LED stays on)
+    utime.sleep(1)     # Wait for 1 second (LED stays on)
     led.off()         # Turn the LED off
-    time.sleep(1)     # Wait for 1 second (LED stays off)
+    utime.sleep(1)     # Wait for 1 second (LED stays off)
