@@ -4,8 +4,8 @@ from machine import Pin
 import time
 
 # Define GPIO pins
-button_pin = 16  # Button connected to GPIO 15
-led_pin = 14     # LED connected to GPIO 25 (built-in LED on some boards)
+button_pin = 16  # Button connected to GPIO 16
+led_pin = 14     # Connection for external LED
 
 # Set up the button as an input with an external pull-up resistor
 button = Pin(button_pin, Pin.IN, pull=Pin.NONE)
