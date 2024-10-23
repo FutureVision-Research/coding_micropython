@@ -1,4 +1,6 @@
-from machine import ADC, Pin
+#Reads the analog input from a potentiomter connected to an analog input and outputs the result to the shell
+
+from machine import ADC, Pin #Loads the classes ADC and Pin from the library module.
 import time
 
 # Initialize ADC on GPIO 26 (ADC0)
