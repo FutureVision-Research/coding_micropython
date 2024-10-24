@@ -1,7 +1,7 @@
 # This script causes an external LED to glow when a button is pressed.
 
-from machine import Pin
-import time
+import machine
+import utime
 
 # Define GPIO pins
 button_pin = 16  # Button connected to GPIO 16
@@ -21,4 +21,4 @@ while True: #Using "while" in this way allows the program to run in a loop, unti
         led.off()  # Turn off the LED when button is released
     
     # Small delay to debounce
-    time.sleep(0.01)
+    utime.sleep(0.01)
