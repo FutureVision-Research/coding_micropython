@@ -1,7 +1,7 @@
 # Reads the analog input of a potentiometer connected to GP26 and converts that value to a voltage
 
 from machine import ADC, Pin
-import time
+import utime
 
 # Initialize ADC on GPIO 26 (ADC0)
 adc_pin = ADC(Pin(26))
@@ -20,4 +20,4 @@ while True:
     print("Voltage: {:.2f} V".format(voltage))
     
     # Small delay before the next reading
-    time.sleep(1)
+    utime.sleep(1)
