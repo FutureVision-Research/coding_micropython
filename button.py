@@ -1,6 +1,6 @@
 # This script causes an external LED to glow when a button is pressed.
 
-import machine
+from machine import Pin #By loading only the class called "Pin", we don't have to use machine.Pin in our code, we just use Pin
 import utime
 
 # Define GPIO pins
