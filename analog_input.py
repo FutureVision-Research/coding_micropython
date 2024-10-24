@@ -1,7 +1,7 @@
 #Reads the analog input from a potentiomter connected to an analog input and outputs the result to the shell
 
 from machine import ADC, Pin #Loads the classes ADC and Pin from the library module.
-import time
+import utime
 
 # Initialize ADC on GPIO 26 (ADC0)
 adc_pin = ADC(Pin(26))
@@ -14,4 +14,4 @@ while True:
     print("Raw ADC Value: {}".format(raw_value))
     
     # Small delay before the next reading
-    time.sleep(1)
+    utime.sleep(1)
