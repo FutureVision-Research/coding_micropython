@@ -8,7 +8,7 @@ button_pin = 16  # Button connected to GPIO 16
 led_pin = 14     # Connection for external LED
 
 # Set up the button as an input with an external pull-up resistor
-button = Pin(button_pin, Pin.IN, pull=Pin.NONE)
+button = Pin(button_pin, Pin.IN, None)
 
 # Set up the LED as an output
 led = Pin(led_pin, Pin.OUT)
