@@ -10,10 +10,10 @@ echo = Pin(15, Pin.IN)
 def getdistance(): #This creates a function that communicates with the ultrasonic sensor
   #Send a 5 microsecond (ms) pulse to the Trigger pin to start the measurement 
   trigger.low()  #Ensure the trigger is low before sending the pulse
-   utime.sleep_us(2) #Wait for a short period (to ensure no residual pulse)
-   trigger.high() #Send a pulse
-   utime.sleep_us(5) #Pulse duration
-   trigger.low() #End the pulse
+  utime.sleep_us(2) #Wait for a short period (to ensure no residual pulse)
+  trigger.high() #Send a pulse
+  utime.sleep_us(5) #Pulse duration
+  trigger.low() #End the pulse
 
  #Measure the pulse width from the Echo pin
  while echo.value() == 0:
