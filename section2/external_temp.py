@@ -13,7 +13,10 @@ temp_sensor = ADC(TEMP_SENSOR_PIN)
 # Main loop
 while True:
     # Read raw analog value from the sensor
-    raw_value = temp_sensor.read_u16()
+    raw_value = temp_sensor.read_u16() #Create the variable raw_value and assign it an unsigned 16 bit integer based on a read of the temperature sensor
+
+    print(f"The type of raw_value is: {type(raw_value)}")  # Display the type of raw_value
+    input("Press Enter to continue...")  # Wait for the user to press Enter before proceeding
     
     # Convert raw value to voltage
     voltage = (raw_value / ADC_RESOLUTION) * VOLTAGE_REFERENCE
