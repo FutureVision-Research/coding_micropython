@@ -3,6 +3,7 @@ from machine import Pin
 from utime import sleep
 
 # Define the LED pins (GPIO 0 through GPIO 9)
+# Note: the number for range in the following statement is not correct. We will fix it during class.
 led_pins = [Pin(i, Pin.OUT) for i in range(11)]
 
 # Main loop
