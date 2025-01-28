@@ -10,6 +10,7 @@ led_pins = [Pin(i, Pin.OUT) for i in range(11)]
 try:
     while True:
         # Turn on LEDs one by one in sequence
+        # Note: the number for range in the following statement is not correct. We will fix it during class.
         for i in range(11):
             # Turn off all LEDs
             for led in led_pins:
