@@ -1,23 +1,37 @@
-from machine import Pin, time_pulse_us
-import time
+# This script use a HC-SR04 to measure distance. The measurement is displayed in the Shell.
 
-SOUND_SPEED=340 # Vitesse du son dans l'air
-TRIG_PULSE_DURATION_US=10
-
-trig_pin = Pin(14, Pin.OUT) # Broche GP15 de la Pico
-echo_pin = Pin(15, Pin.IN)  # Broche GP14 de la Pico
+from machine import Pin #Pin allows us to communicate with GPIO pins
+import utime #Used to introduce a delay into our script
+ 
+# Set up GPIO pins for communication with the sensor
+trigger = Pin(14, Pin.OUT)
+echo = Pin(15, Pin.IN)
 
 while True:
-    # Prepare le signal
-    trig_pin.value(0)
-    time.sleep_us(5)
-    # Créer une impulsion de 10 µs
-    trig_pin.value(1)
-    time.sleep_us(TRIG_PULSE_DURATION_US)
-    trig_pin.value(0)
-
-    ultrason_duration = time_pulse_us(echo_pin, 1, 30000) # Renvoie le temps de propagation de l'onde (en µs)
-    distance_cm = SOUND_SPEED * ultrason_duration / 20000
-
-    print(f"Distance : {distance_cm} cm")
-    time.sleep_ms(500) 
+    # Set the trigger to low so no sound is being transmitted.
+    trigger.low()
+    utime.sleep_us(2)
+    # Send sound for 5 µs
+    trigger.high()
+    utime.sleep_us(5)
+    trigger.low()
+   
+    # Echo pin on the sensor is high when sound is heard and low when there is no sound.
+    # Echo pin will be low after untill the pulse hits an object and returns.
+    # Echo will go high after pulse is detected.
+    while echo.value() == 0:
+        signaloff = utime.ticks_us()
+    while echo.value() == 1:
+        signalon = utime.ticks_us()
+   
+    # The time between signaloff and signalon gives us the travel time of the pulse.
+    timepassed = signalon - signaloff
+   
+    # We only need to know the travel time to the object, so the value is divided by two.
+    # The value 0.0343 is based on the speed of sound through air.
+    distance_cm = (timepassed * 0.0343) / 2
+   
+    # Display the measurement in centimeters and inches
+    print("The distance from object is ",distance_cm,"cm")
+    print("The distance from object is ",distance_cm/2.54, "in")
+    utime.sleep(2) # Slight delay to read the measurement before restarting the loop
