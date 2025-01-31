@@ -1,29 +1,23 @@
-#This script uses the HC-SR04 ultrasonic sensor to measure distance.
-#The result is displayed to the Shell
+from machine import Pin, time_pulse_us
+import time
 
-from machine import Pin
-import utime
+SOUND_SPEED=340 # Vitesse du son dans l'air
+TRIG_PULSE_DURATION_US=10
 
-trigger = Pin(14, Pin.OUT)
-echo = Pin(15, Pin.IN)
-
-def getdistance(): #This creates a function that communicates with the ultrasonic sensor
-    #Send a 5 microsecond (ms) pulse to the Trigger pin to start the measurement 
-    trigger.low()  #Ensure the trigger is low before sending the pulse
-    utime.sleep_us(2) #Wait for a short period (to ensure no residual pulse)
-    trigger.high() #Send a pulse
-    utime.sleep_us(5) #Pulse duration
-    trigger.low() #End the pulse
-
- #Measure the pulse width from the Echo pin
-while echo.value() == 0:
-    signaloff = utime.ticks_us() #Tracks time that passes waiting for sound signal to be received
-    while echo.value() == 1:
-        signalon = utime.ticks_us() #The Echo pin goes high when the sound signal is received
-        timepassed = signalon - signaloff 
-        distance = (timepassed * 0.0343) / 2
-        print("The distance from object is ",distance,"cm")
+trig_pin = Pin(14, Pin.OUT) # Broche GP15 de la Pico
+echo_pin = Pin(15, Pin.IN)  # Broche GP14 de la Pico
 
 while True:
-    getdistance()
-    utime.sleep(1)
+    # Prepare le signal
+    trig_pin.value(0)
+    time.sleep_us(5)
+    # Créer une impulsion de 10 µs
+    trig_pin.value(1)
+    time.sleep_us(TRIG_PULSE_DURATION_US)
+    trig_pin.value(0)
+
+    ultrason_duration = time_pulse_us(echo_pin, 1, 30000) # Renvoie le temps de propagation de l'onde (en µs)
+    distance_cm = SOUND_SPEED * ultrason_duration / 20000
+
+    print(f"Distance : {distance_cm} cm")
+    time.sleep_ms(500) 
