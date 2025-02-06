@@ -1,3 +1,6 @@
+# This script uses PWM to play tones over a speaker connected to GP15.
+# Best practice when using one PWM pin to drive a speaker (which is DC) is to use a diode to protect from kickback.
+
 from machine import Pin, PWM
 from time import sleep
 
@@ -5,7 +8,7 @@ from time import sleep
 speaker = PWM(Pin(15))
 
 # Create a data type called a "list" which stores the frequencies for the C Major scale (Middle C to High C)
-# List of notes and their frequencies: C4:261, D4:294, E4:329, F4:349, G4:392, A4:440, B4:494, C5:523
+# List of notes and their frequencies rounded to the nearest integer: C4:261, D4:294, E4:329, F4:349, G4:392, A4:440, B4:494, C5:523
 C_MAJOR_SCALE = [261, 294, 329, 349, 392, 440, 494, 523]
 
 # Create a variable to hold the duration for each note (milliseconds)
