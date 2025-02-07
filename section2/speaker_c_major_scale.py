@@ -19,7 +19,7 @@ def play_tone(frequency, duration): # Creates a function called "play_tone" and 
     if frequency > 0: # Will only send a PWM signal to the speaker if a frequency is specified
         speaker.freq(frequency) # Sends a specific frequency as PWM
         speaker.duty_u16(30000)  # Adjust volume (0-65535). Values higher than 30000 may cause distortion
-        sleep(duration / 1000) # Rests between notes
+        sleep(duration / 1000) # Rests between notes. By dividing by 1,000, we convert milliseconds to seconds
         speaker.duty_u16(0)  # Turn off sound. It is important to turn off PWM so no voltage is sent to speaker
     sleep(0.1)  # Short pause between notes
 
