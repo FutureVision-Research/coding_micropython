@@ -18,7 +18,12 @@ def set_servo_position(adc_value):
     servo.duty_u16(duty)
 
 # Main loop
-while True:
-    adc_value = adc.read_u16()  # Read ADC value (0-65535)
-    set_servo_position(adc_value) #calls the function to set the servo position
-    time.sleep(0.05)  # Small delay to prevent excessive updates
+try:
+    while True:
+        adc_value = adc.read_u16()  # Read ADC value (0-65535)
+        set_servo_position(adc_value) #calls the function to set the servo position
+        time.sleep(0.05)  # Small delay to prevent excessive updates
+
+except KeyboardInterrupt: #Disable PMW before breaking out of the program
+    servo.deinit()
+    print("Servo is disabled")
