@@ -31,16 +31,22 @@ def set_motor(speed, direction): # Set motor speed and direction
         
     motor_pwm.duty_u16(speed) #Sets PWM based on duty cycle determined by potentiometer
 
-while True:
-    # Read potentiometer value (0-65535)
-    speed = potentiometer.read_u16()
-    
-    # Check if button is pressed to toggle direction
-    if button.value():
-        motor_direction = not motor_direction
-        utime.sleep(0.3)  # Debounce delay
-    
-    # Call the function to set the motor's speed and direction
-    set_motor(speed, motor_direction)
+try:
+    while True:
+        # Read potentiometer value (0-65535)
+        speed = potentiometer.read_u16()
+        
+        # Check if button is pressed to toggle direction
+        if button.value() == 0: 
+            motor_direction = not motor_direction
+            utime.sleep(0.3)  # Debounce delay
+        
+        # Call the function to set the motor's speed and direction
+        set_motor(speed, motor_direction)
 
-    utime.sleep(0.1)  # Short delay
+        utime.sleep(0.1)  # Short delay
+        
+except KeyboardInterrupt: #Disable PMW before breaking out of the program
+    motor_pwm.duty_u16(0) #Sets PWM to zero which turns off the L293
+    print("Motor is disabled")
+
