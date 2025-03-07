@@ -11,11 +11,11 @@ try:
     while True:
        for duty in range(1500, 7850, 10):
            servo.duty_u16(duty)
-           print(f'The PWM frequency is {duty}')
+           print(f'The PWM duty cycle is {duty}')
            sleep(0.01)
        for duty in range(7850, 1500, -10):
            servo.duty_u16(duty)
-           print(f'The PWM frequency is {duty}')
+           print(f'The PWM dutycycle is {duty}')
            sleep(0.01)
 except KeyboardInterrupt:
     servo.deinit()
