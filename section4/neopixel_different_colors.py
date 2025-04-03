@@ -37,7 +37,7 @@ try:
     np[1] = (0, 255, 255)   # set LED 1 to cyan
     np.write()
     
-    np[2] = (255, 64, 0)   # set LED 2 to orange
+    np[2] = (255, 165, 0)   # set LED 2 to orange
     np.write()
     
     np[3] = (128, 0, 128)   # set LED 3 to purple
