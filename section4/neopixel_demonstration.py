@@ -1,3 +1,6 @@
+# This script uses neopixel library to control a strand of five WS2812 LEDS. The Neopixel library was created by Adafruit
+# All five LEDs will be set to red, then green, then blue
+
 import machine            # Allows us to communicate with GPIO pins
 import neopixel           # Library to control WS2812 LEDs (built into microPython
 from time import sleep    # Allows us to introduce delays into the script
