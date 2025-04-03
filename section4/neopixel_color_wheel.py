@@ -1,5 +1,5 @@
 # This script uses the library neopixel to cycle five LEDs through the range of available colors.
-# The neopixel library is included with microPython and was created by Adafruit
+# The neopixel library is provided by microPython and is a limited version of a more detailed library from Adafruit
 
 import machine
 import neopixel
