@@ -1,4 +1,6 @@
-# This script uses neopixel library to control a strand of five WS2812 LEDS. The Neopixel library was created by Adafruit
+# This script uses neopixel library to control a strand of five WS2812 LEDS.
+# Keep in mind: We are using the neopixel library included with MicroPython, which is a minimal, low-level library developed by the MicroPython team.
+# Adafruit provides a more feature-rich NeoPixel library for their own fork of MicroPython, called CircuitPython.
 # All five LEDs will be set to red, then green, then blue
 
 import machine            # Allows us to communicate with GPIO pins
