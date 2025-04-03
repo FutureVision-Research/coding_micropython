@@ -32,11 +32,18 @@ def scale_color(color, brightness):
 
 # === Main loop ===
 offset = 0
-while True:
+try:
+    while True:
+        for i in range(NUM_LEDS):
+            color_index = (offset + i * 30) % 256
+            raw_color = wheel(color_index)
+            np[i] = scale_color(raw_color, BRIGHTNESS)
+        np.write()
+        offset = (offset + 5) % 256
+        time.sleep(DELAY)
+
+except KeyboardInterrupt: #executes the following code block if user breaks out of the program
     for i in range(NUM_LEDS):
-        color_index = (offset + i * 30) % 256
-        raw_color = wheel(color_index)
-        np[i] = scale_color(raw_color, BRIGHTNESS)
-    np.write()
-    offset = (offset + 5) % 256
-    time.sleep(DELAY)
+            np[i] = (0, 0, 0) #Sets each LED to "no color"
+    np.write() # Sends color setting to LEDs
+    print("All LEDs are off. Exiting program.")
