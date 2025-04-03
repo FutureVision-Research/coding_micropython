@@ -1,6 +1,9 @@
-# This script uses the neopixel library to control a strand of five WS2812 LEDS. The Neopixel library was created by Adafruit
+# This script uses the neopixel library to control a strand of five WS2812 LEDS.
+# Keep in mind: We are using the neopixel library included with MicroPython, which is a minimal, low-level library developed by the MicroPython team.
+# Adafruit provides a more feature-rich NeoPixel library for their own fork of MicroPython, called CircuitPython.
 # There is no loop in the script. It will set each LED to a different color and then wait for the user to press Enter
 # Once Enter is pressed, the script will clear all LEDs and then end
+
 # Yellow = 255, 255, 0
 # Cyan = 0, 255, 255
 # Orange = 255, 165, 0
