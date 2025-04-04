@@ -31,17 +31,9 @@ def clear_leds_and_exit(): #This function clears all LEDs so they will be "off" 
 
 try:
     np[0] = (255, 255, 0)   # set LED 0 to yellow
-    np.write()
-    
     np[1] = (0, 255, 255)   # set LED 1 to cyan
-    np.write()
-    
     np[2] = (255, 165, 0)   # set LED 2 to orange
-    np.write()
-    
     np[3] = (128, 0, 128)   # set LED 3 to purple
-    np.write()
-    
     np[4] = (255, 0, 255)   # set LED 4 to magenta
     np.write()
     
