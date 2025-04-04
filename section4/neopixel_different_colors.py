@@ -14,7 +14,6 @@
 import machine            # Allows us to communicate with GPIO pins
 import neopixel           # Library to control WS2812 LEDs (built into microPython
 from time import sleep    # Allows us to introduce delays into the script
-import sys                # Allows us to interact with the Python interpreter
 
 # Setup constants (variables that stay the same through our script.)
 NUM_LEDS = 5              # Number of WS2812 LEDs
